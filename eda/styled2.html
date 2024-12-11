@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2024-2025 Graduate Course Offerings</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #333;
+    }
+    .callout {
+      background-color: #f9f9f9;
+      border-left: 5px solid #ccc;
+      padding: 10px;
+      margin: 20px 0;
+    }
+    .table-tight {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .table-tight th, .table-tight td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+    .table-tight th {
+      background-color: #f2f2f2;
+      text-align: left;
+    }
+    .table-tight tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    .table-tight tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+    .filter-container {
+      margin-bottom: 20px;
+    }
+    .filter-container label {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+    .filter-container select, .filter-container button {
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #333;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .filter-container select:focus, .filter-container button:focus {
+      border-color: #007BFF;
+    }
+  </style>
+  <script>
+    let hideOtherSeasons = false;
+
+    function toggleHideOtherSeasons() {
+      hideOtherSeasons = !hideOtherSeasons;
+      const button = document.getElementById('toggle-hide-button');
+      button.textContent = hideOtherSeasons ? 'Show Other Seasons' : 'Hide Other Seasons';
+      filterTable(document.getElementById('season-filter').value);
+    }
+
+    function filterTable(season) {
+      const rows = document.querySelectorAll('.table-tight tbody tr');
+      const headers = document.querySelectorAll('.table-tight th');
+      rows.forEach(row => {
+        const fall = row.cells[2].innerText.trim();
+        const winter = row.cells[3].innerText.trim();
+        const spring = row.cells[4].innerText.trim();
+        row.style.display = 'none';
+        row.cells[2].style.display = '';
+        row.cells[3].style.display = '';
+        row.cells[4].style.display = '';
+        if (season === 'All') {
+          row.style.display = '';
+        } else if (season === 'Fall' && fall) {
+          row.style.display = '';
+          if (hideOtherSeasons) {
+            row.cells[3].style.display = 'none';
+            row.cells[4].style.display = 'none';
+          }
+        } else if (season === 'Winter' && winter) {
+          row.style.display = '';
+          if (hideOtherSeasons) {
+            row.cells[2].style.display = 'none';
+            row.cells[4].style.display = 'none';
+          }
+        } else if (season === 'Spring' && spring) {
+          row.style.display = '';
+          if (hideOtherSeasons) {
+            row.cells[2].style.display = 'none';
+            row.cells[3].style.display = 'none';
+          }
+        }
+      });
+      headers[2].style.display = '';
+      headers[3].style.display = '';
+      headers[4].style.display = '';
+      if (hideOtherSeasons && season !== 'All') {
+        if (season === 'Fall') {
+          headers[3].style.display = 'none';
+          headers[4].style.display = 'none';
+        } else if (season === 'Winter') {
+          headers[2].style.display = 'none';
+          headers[4].style.display = 'none';
+        } else if (season === 'Spring') {
+          headers[2].style.display = 'none';
+          headers[3].style.display = 'none';
+        }
+      }
+    }
+  </script>
+</head>
+<body>
+<h1><strong>2024-2025 Graduate Course Offerings</strong></h1>
+<p>
+  Below is a list of graduate courses currently scheduled to be offered starting in Fall 2024. Please refer to the
+  <a href="https://registrar.ucr.edu/registering/catalog" rel="noopener noreferrer" target="_blank">UCR General Catalog</a>
+  for course descriptions. Course offerings from previous years can be viewed in our
+  <strong><a href="https://www1.cs.ucr.edu/graduate/archive" rel="noopener noreferrer" target="_blank">Archive</a></strong>.
+</p>
+<div class="callout secondary padding-2">
+  <p>
+    Only approved <strong><a href="https://www1.cs.ucr.edu/undergraduate-technical-electives" rel="noopener noreferrer" target="_blank">undergraduate technical elective</a></strong> courses are applicable to your degree.
+    <br>
+    <strong>Note:</strong> Course offerings, available sections and professor assignments are subject to change without notice.
+  </p>
+</div>
+<div class="filter-container">
+  <label for="season-filter">Filter by season:</label>
+  <select id="season-filter" onchange="filterTable(this.value)">
+    <option value="All">All</option>
+    <option value="Fall">Fall 2024</option>
+    <option value="Winter">Winter 2025</option>
+    <option value="Spring">Spring 2025</option>
+  </select>
+  <button id="toggle-hide-button" onclick="toggleHideOtherSeasons()">Hide Other Seasons</button>
+</div>
+<table cellpadding="0" class="table-tight" style="width: 100%;">
+  <thead>
+  <tr>
+    <th scope="col" style="width: 158px;">Course</th>
+    <th scope="col" style="width: 387px;">Course Title</th>
+    <th scope="col" style="width: 282px;">Fall 2024</th>
+    <th scope="col" style="width: 226px;">Winter 2025</th>
+    <th scope="col" style="width: 195px;">Spring 2025</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS201" id="CS201">CS 201</a>
+    </td>
+    <td style="width: 387px;">Compiler Construction</td>
+    <td style="width: 282px;">
+      <p>Rajiv Gupta</p>
+    </td>
+    <td style="width: 226px;">
+      <p>Zhijia Zhao</p>
+    </td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS202" id="CS202">CS 202</a>
+    </td>
+    <td style="width: 387px;">Advanced Operating Systems</td>
+    <td style="width: 282px;">
+      <p>Heng Yin</p>
+    </td>
+    <td style="width: 226px;">
+      <p>Trent Jaeger</p>
+    </td>
+    <td style="width: 195px;">
+      <p>Cong Liu (ECE Faculty)</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS203" id="CS203">CS 203</a>
+    </td>
+    <td style="width: 387px;">Advanced Computer Architecture</td>
+    <td style="width: 282px;">
+      <p>Hung-Wei Tseng (ECE Faculty)</p>
+    </td>
+    <td style="width: 226px;">
+      <p>Hung-Wei Tseng (ECE Faculty)</p>
+    </td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS204" id="204">CS 204</a>
+    </td>
+    <td style="width: 387px;">
+      <p>Advanced Computer Networks</p>
+    </td>
+    <td style="width: 282px;">
+      <p>K.K Ramakrishnan</p>
+    </td>
+    <td style="width: 226px;">&nbsp;</td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS205" id="CS205">CS 205</a>
+    </td>
+    <td style="width: 387px;">Artificial Intelligence</td>
+    <td style="width: 282px;">
+      <p>Paea LePendu</p>
+    </td>
+    <td style="width: 226px;">
+      <p>Paea LePendu</p>
+    </td>
+    <td style="width: 195px;">
+      <p>Eamonn Keogh</p>
+    </td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS206" id="CS206">CS 206</a>
+    </td>
+    <td style="width: 387px;">Advanced Software Testing and Analysis</td>
+    <td style="width: 282px;">&nbsp;</td>
+    <td style="width: 226px;">
+      <p>Qian Zhang</p>
+    </td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS208" id="CS208">CS 208</a>
+    </td>
+    <td style="width: 387px;">Cloud Computing and Cloud Networking</td>
+    <td style="width: 282px;">&nbsp;</td>
+    <td style="width: 226px;">
+      <p>K.K Ramakrishnan</p>
+    </td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS210" id="CS210">CS 210</a>
+    </td>
+    <td style="width: 387px;">Scientific Computing</td>
+    <td style="width: 282px;">
+      <p>Tamar Shinar</p>
+    </td>
+    <td style="width: 226px;">&nbsp;</td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS211" id="CS211">CS 211</a>
+    </td>
+    <td style="width: 387px;">High Performance Computing</td>
+    <td style="width: 282px;">
+      <p>Zizhong Chen</p>
+    </td>
+    <td style="width: 226px;">&nbsp;</td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  <tr>
+    <td style="width: 158px;">
+      <a href="https://www1.cs.ucr.edu/graduate/course-descriptions#CS212" id="CS212">CS 212</a>
+    </td>
+    <td style="width: 387px;">Data Science Ethics</td>
+    <td style="width: 282px;">&nbsp;</td>
+    <td style="width: 226px;">
+      <p>Mariam Salloum</p>
+    </td>
+    <td style="width: 195px;">&nbsp;</td>
+  </tr>
+  </tbody>
+</table>
+</body>
+</html>
