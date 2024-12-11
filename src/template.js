@@ -151,6 +151,9 @@ export const template = `
 <table class="table-tight">
     <!-- Table content will be inserted here -->
 </table>
+<footer style="margin-top: 40px; padding: 20px; text-align: center; font-size: 16px; color: #333; background-color: #f2f2f2; border-top: 1px solid #ccc;">
+  <p>View this project on <a href="https://github.com/bugparty/ucr_cs_course_enhenced_page" target="_blank" rel="noopener noreferrer" style="color: #007BFF; text-decoration: none;">GitHub</a></p>
+</footer>
 </body>
 </html>
 `;
