@@ -5,7 +5,17 @@ export default {
         return handleRequest(env.request);
     },
 }
+function replaceURLWithAbsolute($, baseUrl) {
+    // Update all relative URLs to absolute URLs
+    $('a[href], link[href], script[src], img[src]').each((index, element) => {
+        const attr = element.tagName === 'script' || element.tagName === 'img' ? 'src' : 'href';
+        const url = $(element).attr(attr);
 
+        if (url && !url.startsWith('http') && !url.startsWith('//')) {
+            $(element).attr(attr, baseUrl + url);
+        }
+    });
+}
 async function handleRequest(request) {
     const url = 'https://www1.cs.ucr.edu/graduate/course-listings';
     const baseUrl = 'https://www1.cs.ucr.edu';
@@ -16,16 +26,6 @@ async function handleRequest(request) {
 
         const cheerio = require('cheerio');
         const $ = cheerio.load(html);
-
-        // Update all relative URLs to absolute URLs
-        $('a[href], link[href], script[src], img[src]').each((index, element) => {
-            const attr = element.tagName === 'script' || element.tagName === 'img' ? 'src' : 'href';
-            const url = $(element).attr(attr);
-
-            if (url && !url.startsWith('http') && !url.startsWith('//')) {
-                $(element).attr(attr, baseUrl + url);
-            }
-        });
 
         // Extract the course list part
         const courseList = $('table.table-tight').html();
