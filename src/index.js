@@ -33,7 +33,7 @@ async function handleUndergradRequest(request) {
 
         const cheerio = require('cheerio');
         const $ = cheerio.load(html);
-
+        replaceURLWithAbsolute($, baseUrl);
         // Extract the course list part
         const courseList = $('table').html();
         // console.log(courseList);
@@ -60,7 +60,7 @@ async function handleRequest(request) {
 
         const cheerio = require('cheerio');
         const $ = cheerio.load(html);
-
+        replaceURLWithAbsolute($, baseUrl);
         // Extract the course list part
         const courseList = $('table.table-tight').html();
        // console.log(courseList);
