@@ -1,6 +1,7 @@
 # UCR CS Grad Courses
 
-This project is a Cloudflare Worker script that fetches and processes the UCR CS graduate course listings, modifies the HTML content to update relative URLs to absolute URLs, and serves the modified HTML content.
+This project is a Cloudflare Worker script that fetches and processes the UCR CS graduate course listings, modifies the HTML content to update relative URLs to absolute URLs,and serves the modified HTML content.By doing that ,it shows a more clear UI to show the courses, most importantly, it allows you to filter by quarter, so you can see which courses you can enroll more clearly.
+
 
 ## Project Structure
 
